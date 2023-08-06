@@ -1,5 +1,7 @@
 import random
 import string
+import tkinter as tk
+from tkinter import ttk
 
 def generar_combinacion():
     caracteres_permitidos = string.ascii_uppercase + string.digits
@@ -7,5 +9,27 @@ def generar_combinacion():
     combinacion = ''.join(random.choice(caracteres_permitidos) for _ in range(longitud_maxima))
     return combinacion
 
-combinacion_aleatoria = generar_combinacion()
-print(combinacion_aleatoria)
+def mostrar_combinacion():
+    combinacion_aleatoria = generar_combinacion()
+    etiqueta_combinacion.config(text=combinacion_aleatoria)
+
+# Crear ventana
+ventana = tk.Tk()
+ventana.title("Generador de Combinaciones")
+ventana.geometry("300x200")
+
+# Crear y decorar la página
+etiqueta_titulo = ttk.Label(ventana, text="Combinación Aleatoria", font=("Helvetica", 14, "bold"))
+etiqueta_titulo.pack(pady=20)
+
+etiqueta_combinacion = ttk.Label(ventana, text="", font=("Helvetica", 20, "bold"))
+etiqueta_combinacion.pack(pady=20)
+
+boton_generar = ttk.Button(ventana, text="Generar Combinación", command=mostrar_combinacion)
+boton_generar.pack(pady=10)
+
+boton_salir = ttk.Button(ventana, text="Salir", command=ventana.quit)
+boton_salir.pack(pady=10)
+
+ventana.mainloop()
+
