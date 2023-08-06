@@ -1,0 +1,11 @@
+import random
+import string
+
+def generar_combinacion():
+    caracteres_permitidos = string.ascii_uppercase + string.digits
+    longitud_maxima = 8
+    combinacion = ''.join(random.choice(caracteres_permitidos) for _ in range(longitud_maxima))
+    return combinacion
+
+combinacion_aleatoria = generar_combinacion()
+print(combinacion_aleatoria)
